@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: model-serve
+  namespace: ray
+spec:
+  selector:
+    matchLabels:
+      app: model-serve
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: model-serve
+    spec:
+      containers:
+      - name: model-serve
+        image: model-serve:latest
+        resources:
+          limits:
+            memory: "1G"
+            cpu: 1
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: model-serve-service
+  namespace: ray
+  annotations:
+      service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+      service.beta.kubernetes.io/aws-load-balancer-scheme: "internal"
+      service.beta.kubernetes.io/aws-load-balancer-type: nlb
+spec:
+  selector:
+    app: model-serve
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
