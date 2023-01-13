@@ -7,9 +7,9 @@ app = FastAPI()
 
 @app.post("/model", response_model=Output)
 async def serve(input: Input):
+    input = input.dict()
     model = random.choice((linear_reg_model,lasso_model,dtree_model))
     processed_inputs = await pre_process(input)
     predictions = await model(processed_inputs)
     output = post_process(predictions, model.__name__)
-    
     return output
