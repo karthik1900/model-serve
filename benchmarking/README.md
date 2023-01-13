@@ -1,4 +1,6 @@
-I have used locust to do a load test on the model sever deployed in kubernetes
+## Benchmarking
+
+I have used [locust](https://github.com/locustio/locust) to do a load test on the model sever deployed in kubernetes
 
 ```
 model server config:
@@ -7,6 +9,8 @@ model server config:
 
 container config: 1 core cpu and 1GB memory
 ```
+
+### Reports
 
 I have done two tests with different concurrency, test report links (html viewer) are below
 
