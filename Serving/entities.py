@@ -1,5 +1,4 @@
-from pydantic import BaseModel, validator
-from typing import Optional
+from pydantic import BaseModel
 
 class Input(BaseModel):
     age: float
@@ -16,4 +15,3 @@ class Input(BaseModel):
 class Output(BaseModel):
     progression: float
     model: str
-
