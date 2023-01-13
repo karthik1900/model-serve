@@ -1,1 +1,2 @@
 /benchmarking/reports/* linguist-vendored
+*.ipynb linguist-language=python
