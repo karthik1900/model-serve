@@ -2,15 +2,17 @@
 
 I have used [locust](https://github.com/locustio/locust) to do a load test on the model sever deployed in kubernetes
 
+model sever configuration
 ```
-model server config:
-
 2 containers
-
 container config: 1 core cpu and 1GB memory
 ```
+Locust run command
+```
+locust -f benchmarking.py
+```
 
-### Reports
+## Reports
 
 I have done two tests with different concurrency, test report links (html viewer) are below
 
